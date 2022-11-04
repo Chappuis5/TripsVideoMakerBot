@@ -16,6 +16,7 @@ print("-----Scraping Images from Pinterest-----\n")
 
 keywords = destination + space + attribute
 mkDir("./assets")
+mkDir("./assets/images")
 path = scraperMethod(destination ,  keywords)
 
 print("-------------Image selection-------------\n")
