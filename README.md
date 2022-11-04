@@ -22,7 +22,8 @@ the song.)
   them? (y/n)" when files are over a certain weight.
 - [ ] Refactor the code for simpler usage on Windows/Linux/MacOs by creating a
   requirements.txt file and managing path emerging issues.
-- [ ] Add a .gitignore for /images and mkdir images when compiled.
+- [ ] Simplify the code.
+- [x] Add a .gitignore for /images and mkdir images when compiled.
 - [x] Add a renaming method.
 - [x] Add a croping and resizing method.
 - [x] Scrape images from pinterest based on keywords.
