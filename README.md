@@ -1,8 +1,9 @@
 # TripsVideoMakerBot
 
-## Usage
+## Installation
 
-Clone git repo and change paths to /images in the scraperMethod (scraper.py).
+Clone git repo and change paths to /images in the scraperMethod (scraper.py). 
+In a terminal window insert: ``pip install -r requirements.txt``
 
 ## Don't push to origin, create another branch
 
