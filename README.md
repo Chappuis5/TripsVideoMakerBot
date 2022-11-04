@@ -20,9 +20,9 @@ the song.)
 - [ ] Manage all exceptions.
 - [ ] Add a "Current files under /images weight [weight], do you want to erase
   them? (y/n)" when files are over a certain weight.
-- [ ] Refactor the code for simpler usage on Windows/Linux/MacOs by creating a
-  requirements.txt file and managing path emerging issues.
+- [ ] Manage path emerging issues.
 - [ ] Simplify the code.
+- [x] Create a requirements.txt
 - [x] Add a .gitignore for /images and mkdir images when compiled.
 - [x] Add a renaming method.
 - [x] Add a croping and resizing method.
