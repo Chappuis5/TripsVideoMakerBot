@@ -51,9 +51,7 @@ def imageCroper(path, temp_path):
         if answer == "y":
             shutil.rmtree(croped_path)
             os.mkdir(croped_path)
-            print("in")
             for j in image_strings:
-                print("in")
                 img = cv2.imread(j)
                 h1, w1  = img.shape[:2]
                 print(img.shape)

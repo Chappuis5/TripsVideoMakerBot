@@ -59,7 +59,6 @@ def scraperMethod(destination, keywords):
             print("\nDownloading completed !!")
             print(f"\nTotal urls found: {len(details['extracted_urls'])}")
             print(f"\nTotal images downloaded (including duplicate images): {len(details['url_list'])}")
-            #print(details)
         else:
             print("\nNothing to download !!")
     
@@ -94,7 +93,7 @@ def imageSelectorJPG(path):
         for j in image_strings:
             img = cv2.imread(j)
             h, w, c  = img.shape[:3]
-            if h >= 1920 and w >= 1080 and c ==3:
+            if h >= 1920 and w >= 1080 and c == 3:
                 name = os.path.basename(j)
                 t_temp_path = os.path.join(temp_path, name)
                 img = cv2.imread(j)

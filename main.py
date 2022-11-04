@@ -1,4 +1,4 @@
-from videocreation.scraper import scraperMethod, imageSelectorJPG, imageSelectorPNG
+from videocreation.ImScraper import scraperMethod, imageSelectorJPG, imageSelectorPNG
 from videocreation.condition_image import dirCleaner, imageCroper
 import time
 from utils.fileCheckers import mkDir
