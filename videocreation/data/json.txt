@@ -1,0 +1,20 @@
+image stream:
+A trip to [destination] is the best thing you could do.
+
+cut to video of mascot:
+Let me explain
+
+cut to first video:
+1. [destination] is the city with the best [insert].
+2. [destination] is a city with fabulous [insert].
+3. In fact [destination] is the most iconic city you could live in.
+
+cut to second video:
+if 1:
+
+if 2:
+
+if 3:
+
+
+Hey, you want to travel to [city] for [duration]?
