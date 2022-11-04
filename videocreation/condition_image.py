@@ -13,6 +13,21 @@ def dirCleaner(path):
 def dirRemover(temp_path):
     shutil.rmtree(temp_path)
 
+def imageRenamer(croped_path):
+    i = 0
+    for filename in os.listdir(croped_path):
+        if filename.endswith(".jpg"):  
+            os.rename(os.path.join(croped_path, filename), os.path.join(croped_path, "image" + str(i) + ".jpg"))
+            i += 1
+        elif filename.endswith(".png"):
+            os.rename(os.path.join(croped_path, filename), os.path.join(croped_path, "image" + str(i) + ".png"))
+            i += 1
+    print("__________SUCCESS________\n")
+    print("----------------------------------------")
+    print("Images renamed")
+    print("----------------------------------------") 
+    print("Done!")
+
 def imageCroper(path, temp_path):
     h = 1920
     w = 1080
@@ -97,7 +112,10 @@ def imageCroper(path, temp_path):
     print("----------------------------------------")
     print("Removing temp file...\n")
     dirRemover(temp_path)
-    print("Done!")
+    print("Renaming images...")
+    imageRenamer(croped_path)
+
+
 
 
 
