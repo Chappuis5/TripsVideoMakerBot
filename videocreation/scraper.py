@@ -11,7 +11,7 @@ from utils.fileCheckers import mkDir
 def scraperMethod(destination, keywords):
 
     directory = destination
-    parent_dir = "/Users/evanflament/Documents/Git-Projects/TripsVideoMakerBot/images"
+    parent_dir = "/Users/evanflament/Documents/Git-Projects/TripsVideoMakerBot/assets/images"
     path = os.path.join(parent_dir, directory)
     mkDir(parent_dir)
     if os.path.exists(path) == True:

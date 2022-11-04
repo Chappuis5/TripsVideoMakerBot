@@ -1,7 +1,7 @@
 from videocreation.scraper import scraperMethod, imageSelectorJPG, imageSelectorPNG
 from videocreation.condition_image import dirCleaner, imageCroper
 import time
-
+from utils.fileCheckers import mkDir
 print("-------------Welcome to the TripTricks bot for TikTok-------------\n")
 print("This bot will help you create a video based on a trip destination\n")
 print("Destination name: ")
@@ -13,7 +13,9 @@ attribute = input()
 print("input: " + attribute + "\n")
 space = " "
 print("-----Scraping Images from Pinterest-----\n")
+
 keywords = destination + space + attribute
+mkDir("./assets")
 path = scraperMethod(destination ,  keywords)
 
 print("-------------Image selection-------------\n")

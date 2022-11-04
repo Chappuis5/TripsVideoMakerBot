@@ -3,6 +3,8 @@ import cv2
 from pathlib import Path
 from PIL import Image
 import shutil
+import time
+import sys
 
 def dirCleaner(path):
     for file_name in os.listdir(path):
@@ -114,6 +116,51 @@ def imageCroper(path, temp_path):
     dirRemover(temp_path)
     print("Renaming images...")
     imageRenamer(croped_path)
+    time.sleep(1)
+    print("-----The process has selected " + str(images_number) + " images.-----")
+    
+    for filename in os.listdir(croped_path):
+        if filename.endswith(".jpg"):
+            path = os.path.join(croped_path, filename)
+            img = cv2.imread(path)
+            cv2.imshow(filename, img)
+            print("Do you want to keep this image? (y/n)")
+            k = cv2.waitKey(0)
+            if k == ord("y"):
+                print("Image saved")
+                os.system('say "Image saved"')
+                continue
+            elif k == ord("n"):
+                print("Image removed")
+                os.system('say "Image removed"')
+                os.remove(path)
+                continue
+            else:
+                print("Please enter a valid answer.")
+                continue
+        elif filename.endswith(".png"):
+            path = os.path.join(croped_path, filename)
+            img = cv2.imread(path)
+            cv2.imshow(filename, img)
+            print("Do you want to keep this image? (y/n)")
+            k = cv2.waitKey(0)
+            if k == ord("y"):
+                print("Image saved")
+                os.system('say "Image saved"')
+                continue
+            elif k == ord("n"):
+                print("Image removed")
+                os.system('say "Image removed"')
+                os.remove(path)
+                continue
+            else:
+                print("Please enter a valid answer.")
+                continue
+    #cv2.destroyAllWindows() 
+    image_selected = next(os.walk(croped_path))[2]
+    images_number = len(image_selected)
+    print("You have selected " + str(images_number) + " images.")
+
 
 
 
