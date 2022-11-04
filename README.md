@@ -3,7 +3,7 @@
 ## Installation
 
 1. Clone this repo.
-2. Change paths tom /images in scraper.py (scraperMethod).
+2. Change paths to /images in scraper.py (scraperMethod).
 3. Run ``pip install -r requirements.txt``.
 
 ## Don't push to origin, create another branch
