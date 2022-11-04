@@ -6,11 +6,14 @@ import cv2
 import glob, random
 from pathlib import Path
 import shutil
+from utils.fileCheckers import mkDir
 
 def scraperMethod(destination, keywords):
+
     directory = destination
     parent_dir = "/Users/evanflament/Documents/Git-Projects/TripsVideoMakerBot/images"
     path = os.path.join(parent_dir, directory)
+    mkDir(parent_dir)
     if os.path.exists(path) == True:
         print("WARNING: Directory already exists.")
         print("Do you want to replace it? (y/n)")
