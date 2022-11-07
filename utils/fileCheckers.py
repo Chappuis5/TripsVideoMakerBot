@@ -24,6 +24,9 @@ def checkFileExt(path, ext):
 def mkDir(path):
     if os.path.isdir(path):
         print("...directory exist...")
+        return True
     else:
         os.mkdir(path)
         print("Directory created")
+        return False
+
