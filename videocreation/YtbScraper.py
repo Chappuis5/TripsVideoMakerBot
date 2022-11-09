@@ -41,7 +41,7 @@ while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) 
     
 
 #background_config: Tuple[str, str, str, Any]
-destination = "Berlin"
+destination = "Los-Angeles"
 #Path("./assets/backgrounds/").mkdir(parents=True, exist_ok=True)
 directory = "backgrounds"
 parent_dir = "./assets"
