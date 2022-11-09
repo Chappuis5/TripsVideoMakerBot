@@ -3,12 +3,33 @@
 from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
-import os
+import os, time
 import sys
 import subprocess
 from tempfile import gettempdir
+import uuid
+import gtts
+from playsound import playsound
 
-def TTS(str):
+#from utils.fileCheckers import mkDir
+
+def mkDir(path):
+    if os.path.isdir(path):
+        print("...directory exist...")
+        return True
+    else:
+        os.mkdir(path)
+        print("Directory created")
+        return False
+
+def mkFile(path):
+    if os.path.isfile(path):
+        print("...file exist...")
+        return True
+    else:
+        return False
+
+def TTS(string):
     # Create a client using the credentials and region defined in the [adminuser]
     # section of the AWS credentials file (~/.aws/credentials).
     mat = ""
@@ -30,7 +51,7 @@ def TTS(str):
 
     try:
         # Request speech synthesis
-        response = polly.synthesize_speech(Text=str, OutputFormat="mp3",
+        response = polly.synthesize_speech(Text=string, OutputFormat="mp3",
                                             VoiceId=mat)
     except (BotoCoreError, ClientError) as error:
         # The service returned an error, exit gracefully
@@ -44,17 +65,28 @@ def TTS(str):
         # ensure the close method of the stream object will be called automatically
         # at the end of the with statement's scope.
             with closing(response["AudioStream"]) as stream:
-                output = os.path.join(gettempdir(), "speech.mp3")
-
+                directory = "audio"
+                parent_dir = "./assets"
+                path = os.path.join(parent_dir, directory)
+                mkDir(path)
+                filename = str(uuid.uuid4())
+                f = filename + ".mp3"
+                output = os.path.join(path, f)
+                if mkFile(output):
+                    new_filename = str(uuid.uuid4())
+                    f = new_filename + ".mp3"
+                    output = os.path.join(path, f)
                 try:
                     # Open a file for writing the output as a binary stream
-                        with open(output, "wb") as file:
-                            file.write(stream.read())
+                    with open(output, "wb") as file:
+                        file.write(stream.read())
+                        t = os.path.getctime(output)
+                        m_ti = time.ctime(t)
+                        print(m_ti)
                 except IOError as error:
                     # Could not write to file, exit gracefully
                     print(error)
                     sys.exit(-1)
-
     else:
         # The response didn't contain audio data, exit gracefully
         print("Could not stream audio")
@@ -66,9 +98,15 @@ def TTS(str):
     else:
         # The following works on macOS and Linux. (Darwin = mac, xdg-open = linux).
         opener = "open" if sys.platform == "darwin" else "xdg-open"
-        subprocess.call([opener, output])
+        subprocess.call([opener, output]) 
 
+""" string = "john suce des gros sexes"
 
-str = "Je m'appelle John et Je suis complêtement homosexuel et je prends un malin plaisir à sucer de gros chibrax"
+TTS(string) """
 
-TTS(str)
+def gTTS(str):
+    tts = gtts.gTTS(str)
+    tts.save("hello.mp3")
+    playsound("hello.mp3")
+
+"""gTTS(string)"""

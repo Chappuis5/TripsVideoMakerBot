@@ -2,3 +2,4 @@ pytube==12.1.0
 gTTS
 pinscrape
 pillow
+moviepy==2.8.1

@@ -2,6 +2,7 @@ import os
 
 def checkFile(path):
     if os.path.isfile(path):
+
         return True
     else:
         return False
@@ -30,3 +31,10 @@ def mkDir(path):
         print("Directory created")
         return False
 
+def mkFile(path):
+    if os.path.isfile(path):
+        print("...file exist...")
+        return True
+    else:
+        return False
+        
