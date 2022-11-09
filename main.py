@@ -2,6 +2,7 @@ from videocreation.ImScraper import scraperMethod, imageSelectorJPG, imageSelect
 from videocreation.condition_image import dirCleaner, imageCroper
 import time
 from utils.fileCheckers import mkDir
+
 print("-------------Welcome to the TripTricks bot for TikTok-------------\n")
 print("This bot will help you create a video based on a trip destination\n")
 print("Destination name: ")
