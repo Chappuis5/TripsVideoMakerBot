@@ -24,11 +24,11 @@ def checkFileExt(path, ext):
 
 def mkDir(path):
     if os.path.isdir(path):
-        print("...directory exist...")
+        #print("...directory exist...")
         return True
     else:
         os.mkdir(path)
-        print("Directory created")
+        #print("Directory created")
         return False
 
 def mkFile(path):

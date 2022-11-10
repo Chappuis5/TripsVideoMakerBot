@@ -26,7 +26,7 @@ def ytbScraper (destination, keyword, name):
     if mkDir(path) == True:
         s = Search(super_keyword)
         i = 0
-        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 1000 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
+        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 600 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
             i += 1
         #print("Video found !")
         url = s.results[i].watch_url
@@ -39,7 +39,7 @@ def ytbScraper (destination, keyword, name):
         mkDir(path)
         s = Search(super_keyword)
         i = 0
-        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 1000 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
+        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 600 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
             i += 1
         #print("Video found !")
         url = s.results[i].watch_url

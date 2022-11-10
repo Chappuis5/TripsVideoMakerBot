@@ -91,17 +91,11 @@ def editor():
     temp_vid_objects = []
     for i in range(0, s_num):
         #print(i)
-        obj = videoCroper(getsoundDuration(f"./assets/audio/sound_{i}.mp3"), f"./assets/backgrounds/video_{i}.mp4")#.write_videofile(f"./assets/temp_edited/{i}.mp4", codec='libx264', audio_codec='aac')
+        obj = videoCroper(getsoundDuration(f"./assets/audio/sound_{i}.mp3"), f"./assets/backgrounds/video_{i}.mp4")
         temp_vid_objects.append(obj)
-        #.set_audio(AudioFileClip(f"./assets/audio/sound_{i}.mp3"))
-        #print(f"Video {i} edited.")
+
     ######
     ### CONCATENATE VIDEO ###
-    """ listF = []
-    for i in os.listdir("./assets/temp_edited"):
-        listF.append(i)
-    f_num = len(listF)
-    #print(f_num) """
 
     mkDir("./assets/final") 
     final_clip = concatenate(temp_vid_objects, method="compose")
