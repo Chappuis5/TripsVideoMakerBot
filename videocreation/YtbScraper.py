@@ -39,40 +39,73 @@ while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) 
     
 
     
-
-#background_config: Tuple[str, str, str, Any]
-destination = "Los-Angeles"
-#Path("./assets/backgrounds/").mkdir(parents=True, exist_ok=True)
-directory = "backgrounds"
-parent_dir = "./assets"
-path = os.path.join(parent_dir, directory)
-mkDir(path)
-directory2 = destination
-parent_dir2 = path
-path2 = os.path.join(parent_dir2, directory2)
-if mkDir(path2):
-    print("Directory already exists.")
-    print("Do you want to replace it? (y/n)")
-    while True:
-        try:
-            answer = input()
-        except:
-            print("Please enter a valid answer.")
-            continue
+def ytbScraper (destination, keyword, name):
+    #background_config: Tuple[str, str, str, Any]
+    #Path("./assets/backgrounds/").mkdir(parents=True, exist_ok=True)
+    super_keyword = destination + keyword
+    directory = "backgrounds"
+    parent_dir = "./assets"
+    path = os.path.join(parent_dir, directory)
+    mkDir(path)
+    directory2 = destination
+    parent_dir2 = path
+    path2 = os.path.join(parent_dir2, directory2)
+    if mkDir(path2):
+        print("Directory already exists.")
+        print("Do you want to replace it? (y/n)")
+        while True:
+            try:
+                answer = input()
+            except:
+                print("Please enter a valid answer.")
+                continue
+            else:
+                break
+        if answer == "y":
+            print("Removing directory...")
+            shutil.rmtree(path2)
+            print("Directory removed.")
+            print("Creating new directory...")
+            os.mkdir(path2)
+            print("Directory created.")
+            #print("Enter a keyword")
+            #keyword = input()
+            s = Search(super_keyword)
+            i = 0
+            while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 500 or (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) < 200:
+                i += 1
+                print(i)
+                print(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))
+            print("Video found !")
+            print(s.results[i].video_id)
+            url = s.results[i].watch_url
+            print(s.results[i].watch_url)
+            print("Downloading video...")
+            yt = YouTube(url).streams.filter(res="1080p").first().download(path2, filename=f"{name}.mp4")
+            print("Video downloaded.")
+        elif answer == "n":
+            s = Search(super_keyword)
+            i = 0
+            while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 500 or (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) < 200:
+                i += 1
+                print(i)
+                print(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))
+            print("Video found !")
+            print(s.results[i].video_id)
+            url = s.results[i].watch_url
+            print(s.results[i].watch_url)
+            print("Downloading video...")
+            yt = YouTube(url).streams.filter(res="1080p").first().download(path2, filename=f"{name}.mp4")
+            print("Video downloaded.")
         else:
-            break
-    if answer == "y":
-        print("Removing directory...")
-        shutil.rmtree(path2)
-        print("Directory removed.")
-        print("Creating new directory...")
-        os.mkdir(path2)
-        print("Directory created.")
-        print("Enter a keyword")
-        keyword = input()
-        s = Search(keyword)
+            print("Please enter a valid answer.")
+            exit()
+    else:
+        #print("Enter a keyword")
+        #keyword = input()
+        s = Search(super_keyword)
         i = 0
-        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 500:
+        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 500 or (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) < 200:
             i += 1
             print(i)
             print(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))
@@ -81,30 +114,8 @@ if mkDir(path2):
         url = s.results[i].watch_url
         print(s.results[i].watch_url)
         print("Downloading video...")
-        yt = YouTube(url).streams.filter(res="1080p").first().download(path2, filename=f"{s.results[i]._title}.mp4")
-        print("Video downloaded.")
-    elif answer == "n":
-        print("Exiting...")
-        exit()
-    else:
-        print("Please enter a valid answer.")
-        exit()
-else:
-    print("Enter a keyword")
-    keyword = input()
-    s = Search(keyword)
-    i = 0
-    while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 500:
-        i += 1
-        print(i)
-        print(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))
-    print("Video found !")
-    print(s.results[i].video_id)
-    url = s.results[i].watch_url
-    print(s.results[i].watch_url)
-    print("Downloading video...")
-    yt = YouTube(url).streams.filter(res="1080p").first().download(path2, filename=f"{s.results[i]._title}.mp4")
-    print("Video downloaded.") 
+        yt = YouTube(url).streams.filter(res="1080p").first().download(path2, filename=f"{name}.mp4")
+        print("Video downloaded.") 
 
 
 """ # note: make sure the file name doesn't include an - in it

@@ -29,10 +29,10 @@ def mkFile(path):
     else:
         return False
 
-def TTS(string):
+def TTS(string, name):
     # Create a client using the credentials and region defined in the [adminuser]
     # section of the AWS credentials file (~/.aws/credentials).
-    mat = ""
+    """ mat = ""
     while True:
         print("Choose the final video language: (en/fr)")
         language = input()
@@ -44,8 +44,8 @@ def TTS(string):
             break
         else:
             print("Please enter a valid language.\n")
-            continue 
-                
+            continue  """
+    mat = "Matthew"         
     session = Session(profile_name="batmstrong")
     polly = session.client("polly")
 
@@ -69,13 +69,12 @@ def TTS(string):
                 parent_dir = "./assets"
                 path = os.path.join(parent_dir, directory)
                 mkDir(path)
-                filename = str(uuid.uuid4())
+                filename = name
                 f = filename + ".mp3"
                 output = os.path.join(path, f)
                 if mkFile(output):
-                    new_filename = str(uuid.uuid4())
-                    f = new_filename + ".mp3"
-                    output = os.path.join(path, f)
+                    print("File already exists.")
+                    exit()
                 try:
                     # Open a file for writing the output as a binary stream
                     with open(output, "wb") as file:
@@ -92,13 +91,7 @@ def TTS(string):
         print("Could not stream audio")
         sys.exit(-1)
 
-    # Play the audio using the platform's default player
-    if sys.platform == "win32":
-        os.startfile(output)
-    else:
-        # The following works on macOS and Linux. (Darwin = mac, xdg-open = linux).
-        opener = "open" if sys.platform == "darwin" else "xdg-open"
-        subprocess.call([opener, output]) 
+    """ ,  """
 
 """ string = "john suce des gros sexes"
 
