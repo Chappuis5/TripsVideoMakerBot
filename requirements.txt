@@ -3,3 +3,4 @@ gTTS
 pinscrape
 pillow
 moviepy==2.8.1
+pvleopard>=1.1

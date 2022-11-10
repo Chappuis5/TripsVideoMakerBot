@@ -1,4 +1,3 @@
-
 """Getting Started Example for Python 2.7+/3.3+"""
 from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
@@ -15,21 +14,22 @@ from playsound import playsound
 
 def mkDir(path):
     if os.path.isdir(path):
-        print("...directory exist...")
+        #print("...directory exist...")
         return True
     else:
         os.mkdir(path)
-        print("Directory created")
+        #print("Directory created")
         return False
 
 def mkFile(path):
     if os.path.isfile(path):
-        print("...file exist...")
+        #print("...file exist...")
         return True
     else:
         return False
 
 def TTS(string, name):
+    mkDir("./assets")
     # Create a client using the credentials and region defined in the [adminuser]
     # section of the AWS credentials file (~/.aws/credentials).
     """ mat = ""
@@ -81,7 +81,7 @@ def TTS(string, name):
                         file.write(stream.read())
                         t = os.path.getctime(output)
                         m_ti = time.ctime(t)
-                        print(m_ti)
+                        #print(m_ti)
                 except IOError as error:
                     # Could not write to file, exit gracefully
                     print(error)
