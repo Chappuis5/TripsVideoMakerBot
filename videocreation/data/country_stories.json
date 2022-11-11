@@ -161,19 +161,6 @@
                     {"video_9": "Normandy footage"},
                     {"video_10": "Enigma Benedict"}
                 ]
-            },
-            {
-                "title": "The Battle of Britain",
-                "strings": [
-                    {
-                        "str_0": "The Battle of Britain was a military campaign of the Second World War,"
-                    },
-                    {
-                        "str_1": "fought in the air over the United Kingdom in the summer of 1940."
-                    },
-                   
-                    },
-
             }
         ]
     }

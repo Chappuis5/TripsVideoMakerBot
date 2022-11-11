@@ -1,11 +1,7 @@
 import json
-import random
 from videoMaker.voice import TTS
-from videoMaker.voice import gTTS
 from videoMaker.YtbScraper import ytbScraper
 import os
-from videoMaker.image2vid import imageToVid, imageDownloader
-###
 
 
 def scriper(input_story, input_country):

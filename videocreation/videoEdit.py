@@ -1,11 +1,6 @@
 from moviepy.editor import *
 import os
-import time
-import sys
-from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-import cv2
 import random
-from moviepy.video.fx.all import crop, resize
 import json
 from videoMaker.image2vid import imageToVid, imageDownloader
 
@@ -101,9 +96,7 @@ def editor(input_story, input_country):
             imageDownloader(data[input_country]['stories'][input_story]['images'][i][f"image_{i}"], i)
             obj = imageToVid(obj,i)
         temp_vid_objects.append(obj)
-
     ### CONCATENATE VIDEO ###
-
     mkDir("./assets/final") 
     final_clip = concatenate(temp_vid_objects, method="compose")
     ######

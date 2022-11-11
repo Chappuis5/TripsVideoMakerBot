@@ -1,21 +1,14 @@
 import pvleopard
 import os
-import json
 import ffmpeg
 from ffmpeg import *
-import time
-from argparse import ArgumentParser
-from threading import Thread
 from typing import *
-from pathlib import Path
 
 def mkDir(path):
     if os.path.isdir(path):
-        #print("...directory exist...")
         return True
     else:
         os.mkdir(path)
-        #print("Directory created")
         return False
 
 def second_to_timecode(x: float) -> str:
@@ -59,21 +52,23 @@ def to_srt(
 def subMaker(story, country):
     leopard = pvleopard.create(access_key="JHRxxr3akK4RilsSIOyULG8IMwwmbMQX6fLcTeB2yXgXSsDWcexbdA==")
 
-    absolute_path = os.path.dirname(__file__)
-    relative_path = "assets/finalAudio/final.mp3"
-    full_path = os.path.join(absolute_path, relative_path)
+    file = "final.mp3"
+    parent_dir = "./assets/finalAudio/"
+    full_path = os.path.join(parent_dir, file)
     transcript, words = leopard.process_file(full_path)
 
 
     ### CREATE SUBTITLES.SRT
     mkDir("./assets/subtitles")
-    with open("./assets/subtitles/subtitles.srt", 'w') as f:
+    parent_dir1 = "./assets/subtitles/"
+    file1 = "subtitles.srt"
+    with open(os.path.join(parent_dir1, file1), 'w') as f:
         f.write(to_srt(words)) 
 
     ### SUBTITLES.SRT TO UPPERCASE
-    absolute_path2 = os.path.dirname(__file__)
-    path = "assets/subtitles/"
-    full_path2 = os.path.join(absolute_path2, path)
+    dir = "subtitles"
+    path = "./assets/"
+    full_path2 = os.path.join(path, dir)
 
     for filename in os.listdir(full_path2):
         if filename.endswith(".srt"):
@@ -90,15 +85,15 @@ def subMaker(story, country):
         if name.endswith(".txt"):
             os.rename(os.path.join(full_path2, name), os.path.join(full_path2, name.replace(".txt", ".srt")))
 
-    absolute_path3 = os.path.dirname(__file__)
-    relative_path3 = "assets/final/final_clip.mp4"
-    full_path3 = os.path.join(absolute_path3, relative_path3)
-    absolute_path4 = os.path.dirname(__file__)
-    relative_path4 = "assets/subtitles/subtitles_up.srt"
-    full_path4 = os.path.join(absolute_path4, relative_path4)
+    semi_final_video = "final_clip.mp4"
+    parent_dir2 = "./assets/final/"
+    full_path3 = os.path.join(parent_dir2, semi_final_video)
+    full_path_test = "./assets/final/final_clip.mp4"
+    up_sub = "subtitles_up.srt"
+    parent_dir3 =  "assets/subtitles/"
+    full_path4 = os.path.join(parent_dir3, up_sub)
 
     video = ffmpeg.input(full_path3)
-
     audio = video.audio
     video_index = 0
     final_video_path = f"./output/{country}/final_{story}_0.mp4"
@@ -109,3 +104,4 @@ def subMaker(story, country):
     ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=22,Fontname=Impact,PrimaryColour=&H00FFFFFF,Italic=1,Bold=0,Outline=2,OutlineColour=&H00000000,BorderStyle=1,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()   
     
 
+subMaker("Enigma", country="United Kingdom" )

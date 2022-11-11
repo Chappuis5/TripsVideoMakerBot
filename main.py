@@ -4,7 +4,7 @@ import time
 from utils.fileCheckers import mkDir, rmDir
 import json
 import os, shutil
-from subtitles import subMaker
+from videocreation.subtitles import subMaker
 
 print("-------------Welcome to the TripTricks bot for TikTok-------------\n")
 print("This bot will help you create a video based on a trip destination\n")

@@ -8,6 +8,7 @@
 
 ## Usage
 
+WARNING: If you have ffmpeg installed with ffmpeg-python run ```pip uninstall ffmpeg```, ```pip uninstall ffmpeg```, ```pip install ffmpeg-python```
 1. Setup the [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), and set the maximum session duration to seven days. 
 2. Change the 35th line in ```voice.py```with your user profile name.
 3. Run main.py ```python3 main.py````

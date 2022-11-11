@@ -4,13 +4,6 @@ from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
 import os, time
 import sys
-import subprocess
-from tempfile import gettempdir
-import uuid
-import gtts
-from playsound import playsound
-
-#from utils.fileCheckers import mkDir
 
 def mkDir(path):
     if os.path.isdir(path):
@@ -76,16 +69,3 @@ def TTS(string, name):
         # The response didn't contain audio data, exit gracefully
         print("Could not stream audio")
         sys.exit(-1)
-
-    """ ,  """
-
-""" string = "john suce des gros sexes"
-
-TTS(string) """
-
-def gTTS(str):
-    tts = gtts.gTTS(str)
-    tts.save("hello.mp3")
-    playsound("hello.mp3")
-
-"""gTTS(string)"""
