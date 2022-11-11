@@ -2,3 +2,7 @@ assets/
 output/
 videocreation/__pycache__/
 videoMaker/__pycache__/
+utils/__pycache__
+__pycache__/
+*.py[cod]
+*$py.class
