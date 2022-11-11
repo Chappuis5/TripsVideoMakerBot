@@ -1,4 +1,4 @@
 assets/
 output/
-videocreation/__pycache__
-videoMaker/__pycache__
+videocreation/__pycache__/
+videoMaker/__pycache__/
