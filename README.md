@@ -11,7 +11,7 @@
 WARNING: If you have ffmpeg installed with ffmpeg-python run ```pip uninstall ffmpeg```, ```pip uninstall ffmpeg```, ```pip install ffmpeg-python```
 1. Setup the [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), and set the maximum session duration to seven days. 
 2. Change the 35th line in ```voice.py```with your user profile name.
-3. Run main.py ```python3 main.py````
+3. Run main.py ```python3 main.py```
 4. Connect to AWS, the session will last 7 days. 
 
 After a push, if __pycache__.py files can be found on the git repo, remove them using: ```git rm -r --cached . && git add . && git commit -m "fixing .gitignore"```
