@@ -1,0 +1,180 @@
+[
+    {
+        "country": "United Kingdom",
+        "people": "British",
+        "stories": [
+            {
+                "title": "Henry Tendey",
+                "strings": [
+                    {
+                        "str_0": "Henry Tendy is the most infamous soldier."
+                    },
+                    {
+                        "str_1": "Henry Tendey was born in Leamington, in 1891. He soon became a soldier for the british army."
+                    },
+                    {
+                        "str_2": "In 1914 the world war 1 began and Henry was sent to the front."
+                    },
+                    {
+                        "str_3": "Henry fought really hard, fearless of what could happend to him."
+                    },
+                    {
+                        "str_4": "During the Battle of the Somme in 1916, he took so many risks to defend his country that he was shot to the chest and severely wounded."
+                    },
+                    {
+                        "str_5": "Fortunately, Henry survived and could return to the combat in 1917."
+                    },
+                    {
+                        "str_6": "For this battle of the Somme, but also for other battles he fought after,"
+                    },
+                    {
+                        "str_7": "Henry soon became the most decorated British Soldier."
+                    },
+                    {
+                        "str_8": "But, Henry made a huge mistake."
+                    },
+                    {
+                        "str_9": "During an operation in the french village of Marcoing,"
+                    },
+                    {
+                        "str_10": "a weary German soldier wandered into Tandey's line of fire."
+                    },
+                    {
+                        "str_11": "The enemy was wounded and did not appear to have a weapon."
+                    },
+                    {
+                        "str_12": "And Tandey chose not to shoot."
+                    },
+                    {
+                        "str_13": "The German soldier saw him lower his rifle and nodded his thanks before wandering off."
+                    },
+                    {
+                        "str_14": "But unfortunately for Henry, that soldier is purported to have been"
+                    },
+                    {
+                        "str_15": "Adolf Hitler."
+                    },
+                    {
+                        "str_16": "And now you now why"
+                    }
+                ],
+                "images": [
+                    {"image_0": ""},
+                    {"image_1": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Pte_Tandey_VC_DCM_MM.JPG/1200px-Pte_Tandey_VC_DCM_MM.JPG"},
+                    {"image_2": ""},
+                    {"image_3": ""},
+                    {"image_4": ""},
+                    {"image_5": ""},
+                    {"image_6": ""},
+                    {"image_7": ""},
+                    {"image_8": ""},
+                    {"image_9": ""},
+                    {"image_10": ""},
+                    {"image_11": ""},
+                    {"image_12": ""},
+                    {"image_13": ""},
+                    {"image_14": ""},
+                    {"image_15": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bundesarchiv_Bild_183-H1216-0500-002%2C_Adolf_Hitler.jpg"},
+                    {"image_16": ""}
+                      
+                ],
+                "videos": [
+                    {
+                    "video_0": "timelapse of the stars"},{
+                    "video_1": "timelapse of the stars"},{
+                    "video_2": "World War one real footage"},{
+                    "video_3": "cinematic sky timelapse"},{
+                    "video_4": "World War one reconstitution"},{
+                    "video_5": "night sky timelapse"},{
+                    "video_6": "world war battle reconstitution"},{
+                    "video_7": "British soldier decorated ceremony"},{
+                    "video_8": "night sky timelapse"},{
+                    "video_9": "french village by drone"},{
+                    "video_10": "airsoft gun pov"},{
+                    "video_11": "cinematic forest night timelapse"},{
+                    "video_12": "night sky drone timelapse"},{
+                    "video_13": "night forest drone"},{
+                    "video_14": "scary night timelapse"},{
+                    "video_15": "scary night timelapse"},{
+                    "video_16": "timelapse of the stars"}]
+            },
+            {
+                "title": "Enigma",
+                "strings": [
+                    {
+                        "str_0": "Alan Turing was a war hero."
+                    },
+                    {
+                        "str_1": "He cracked the famous Nazi encryption code enigma and help in the victory of the allies."
+                    },
+                    {
+                        "str_2": "Alan Turing was a brilliant mathematician. He was born in London in 1912 and studied at both Princeton and Cambridge universities."
+                    },
+                    {
+                        "str_3": "In 1939 he took a full time role where he started to work on the military codes used by Germany."
+                    },
+                    {
+                        "str_4": "The Enigma was a type of enciphering machine used by the German armed forces to send messages securely"
+                    },
+                    {
+                        "str_5": "The Germans were increasing its security by changing the cipher system daily"
+                    },
+                    {
+                        "str_6": "This made the task of understanding the code almost impossible"
+                    },
+                    {
+                        "str_7": "Turing travelled to the United States in December 1942"
+                    },
+                    {
+                        "str_8": ", to advise US military intelligence in the use of Bombe machines and to share his knowledge of Enigma"
+                    },
+                    {
+                        "str_9": "This helped a lot the allies in fighting the enemy and winning the war"
+                    },
+                    {
+                        "str_10": "A great movie about Turing's life is The Imitation Game, you should watch it, Now you know why"
+                    }
+                ],
+                "images": [
+                    {"image_0": ""},
+                    {"image_1": "https://www.bibmath.net/bios/images/turing.jpg"},
+                    {"image_2": ""},
+                    {"image_3": ""},
+                    {"image_4": ""},
+                    {"image_5": ""},
+                    {"image_6": ""},
+                    {"image_7": ""},
+                    {"image_8": ""},
+                    {"image_9": ""},
+                    {"image_10": ""}
+                ],
+                "videos": [
+                    {"video_0": "night forest drone"},
+                    {"video_1": "London timelapse footage"},
+                    {"video_2": "Night sky timelapse"},
+                    {"video_3": "London drone timelapse"},
+                    {"video_4": "World War one reconstitution"},
+                    {"video_5": "night sky timelapse"},
+                    {"video_6": "world war battle reconstitution"},
+                    {"video_7": "Washington drone"},
+                    {"video_8": "night sky timelapse"},
+                    {"video_9": "Normandy footage"},
+                    {"video_10": "Enigma Benedict"}
+                ]
+            },
+            {
+                "title": "The Battle of Britain",
+                "strings": [
+                    {
+                        "str_0": "The Battle of Britain was a military campaign of the Second World War,"
+                    },
+                    {
+                        "str_1": "fought in the air over the United Kingdom in the summer of 1940."
+                    },
+                   
+                    },
+
+            }
+        ]
+    }
+]

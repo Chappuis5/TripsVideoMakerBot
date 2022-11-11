@@ -56,50 +56,56 @@ def to_srt(
     return '\n'.join(lines)
 
 
-leopard = pvleopard.create(access_key="JHRxxr3akK4RilsSIOyULG8IMwwmbMQX6fLcTeB2yXgXSsDWcexbdA==")
+def subMaker(story, country):
+    leopard = pvleopard.create(access_key="JHRxxr3akK4RilsSIOyULG8IMwwmbMQX6fLcTeB2yXgXSsDWcexbdA==")
 
-absolute_path = os.path.dirname(__file__)
-relative_path = "assets/finalAudio/final.mp3"
-full_path = os.path.join(absolute_path, relative_path)
-transcript, words = leopard.process_file(full_path)
+    absolute_path = os.path.dirname(__file__)
+    relative_path = "assets/finalAudio/final.mp3"
+    full_path = os.path.join(absolute_path, relative_path)
+    transcript, words = leopard.process_file(full_path)
 
 
-### CREATE SUBTITLES.SRT
-mkDir("./assets/subtitles")
-with open("./assets/subtitles/subtitles.srt", 'w') as f:
-    f.write(to_srt(words)) 
+    ### CREATE SUBTITLES.SRT
+    mkDir("./assets/subtitles")
+    with open("./assets/subtitles/subtitles.srt", 'w') as f:
+        f.write(to_srt(words)) 
 
-### SUBTITLES.SRT TO UPPERCASE
-absolute_path2 = os.path.dirname(__file__)
-path = "assets/subtitles/"
-full_path2 = os.path.join(absolute_path2, path)
+    ### SUBTITLES.SRT TO UPPERCASE
+    absolute_path2 = os.path.dirname(__file__)
+    path = "assets/subtitles/"
+    full_path2 = os.path.join(absolute_path2, path)
 
-for filename in os.listdir(full_path2):
-    if filename.endswith(".srt"):
-        os.rename(os.path.join(full_path2, filename), os.path.join(full_path2, filename.replace(".srt", ".txt")))
-        
-print(filename + " has been converted to txt")
-txt_file = open(os.path.join(full_path2, filename.replace(".srt", ".txt")), 'r')
-for x in txt_file.read():
-    y = x.upper()
-    txt_file_upper = open(os.path.join(full_path2, "subtitles_up.txt"), 'a')
-    txt_file_upper.write(y)
-os.remove(os.path.join(full_path2, filename.replace(".srt", ".txt")))
+    for filename in os.listdir(full_path2):
+        if filename.endswith(".srt"):
+            os.rename(os.path.join(full_path2, filename), os.path.join(full_path2, filename.replace(".srt", ".txt")))
+            
+    txt_file = open(os.path.join(full_path2, filename.replace(".srt", ".txt")), 'r')
+    for x in txt_file.read():
+        y = x.upper()
+        txt_file_upper = open(os.path.join(full_path2, "subtitles_up.txt"), 'a')
+        txt_file_upper.write(y)
+    os.remove(os.path.join(full_path2, filename.replace(".srt", ".txt")))
 
-for name in os.listdir(full_path2):
-    if name.endswith(".txt"):
-        os.rename(os.path.join(full_path2, name), os.path.join(full_path2, name.replace(".txt", ".srt")))
+    for name in os.listdir(full_path2):
+        if name.endswith(".txt"):
+            os.rename(os.path.join(full_path2, name), os.path.join(full_path2, name.replace(".txt", ".srt")))
 
-absolute_path3 = os.path.dirname(__file__)
-relative_path3 = "assets/final/final_clip.mp4"
-full_path3 = os.path.join(absolute_path3, relative_path3)
-absolute_path4 = os.path.dirname(__file__)
-relative_path4 = "assets/subtitles/subtitles_up.srt"
-full_path4 = os.path.join(absolute_path4, relative_path4)
+    absolute_path3 = os.path.dirname(__file__)
+    relative_path3 = "assets/final/final_clip.mp4"
+    full_path3 = os.path.join(absolute_path3, relative_path3)
+    absolute_path4 = os.path.dirname(__file__)
+    relative_path4 = "assets/subtitles/subtitles_up.srt"
+    full_path4 = os.path.join(absolute_path4, relative_path4)
 
-video = ffmpeg.input(full_path3)
+    video = ffmpeg.input(full_path3)
 
-audio = video.audio
-output_ffmpeg = ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=22,Fontname=Impact,PrimaryColour=&H10FFFFFF,Italic=0,Bold=0,OutlineColour=&H88000000,BorderStyle=3,Alignment=2,MarginV=155'), audio, v=1, a=1).output("./assets/final/final_sub.mp4").run()   
-#output_ffmpeg = ffmpeg.overwrite_output(output_ffmpeg)
+    audio = video.audio
+    video_index = 0
+    final_video_path = f"./output/{country}/final_{story}_0.mp4"
+    while(os.path.exists(final_video_path)):
+        video_index += 1
+        final_video_path = f"./output/{country}/final_{story}_{video_index}.mp4"
+       
+    ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=22,Fontname=Impact,PrimaryColour=&H00FFFFFF,Italic=1,Bold=0,Outline=2,OutlineColour=&H00000000,BorderStyle=1,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()   
+    
 

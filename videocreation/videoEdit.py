@@ -6,6 +6,8 @@ from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 import cv2
 import random
 from moviepy.video.fx.all import crop, resize
+import json
+from videoMaker.image2vid import imageToVid, imageDownloader
 
 
 def mkDir(path):
@@ -68,9 +70,14 @@ def concatenate(temp_vid_objects, method="compose"):
     return final_clip
     #final_clip.write_videofile(output_path) 
 
+def loadJson():
+    json_f = "country_stories.json"
+    parent_dir = "./videocreation/data/"
+    with open(os.path.join(parent_dir,json_f)) as json_file:
+        data = json.load(json_file)
+        return data    
 
-
-def editor():
+def editor(input_story, input_country):
 
     ### CONCATENATE SOUND ###
     list = []
@@ -85,16 +92,16 @@ def editor():
 
     mkDir("./assets/finalAudio")
     concatenate_audio_moviepy(list_sound, "./assets/finalAudio/final.mp3")
-    #mkDir("./assets/temp_edited")
-    ######
-    ### Make SUBCLIPS based on sounds length###
+    ### Make SUBCLIPS based on sounds length and add images###
     temp_vid_objects = []
     for i in range(0, s_num):
-        #print(i)
+        data = loadJson()
         obj = videoCroper(getsoundDuration(f"./assets/audio/sound_{i}.mp3"), f"./assets/backgrounds/video_{i}.mp4")
+        if(data[input_country]['stories'][input_story]['images'][i][f"image_{i}"] != ""):
+            imageDownloader(data[input_country]['stories'][input_story]['images'][i][f"image_{i}"], i)
+            obj = imageToVid(obj,i)
         temp_vid_objects.append(obj)
 
-    ######
     ### CONCATENATE VIDEO ###
 
     mkDir("./assets/final") 
@@ -109,5 +116,7 @@ def editor():
     x_3 = 1080 + x_2
     not_written.resize((w_2, h_2)).crop(x1 = x_2, x2=x_3, y1 = 0, y2 = 1920).write_videofile("./assets/final/final_clip.mp4", codec='libx264', audio_codec='aac')
     ######
+
+
 
 

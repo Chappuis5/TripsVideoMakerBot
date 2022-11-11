@@ -29,22 +29,8 @@ def mkFile(path):
         return False
 
 def TTS(string, name):
-    mkDir("./assets")
     # Create a client using the credentials and region defined in the [adminuser]
     # section of the AWS credentials file (~/.aws/credentials).
-    """ mat = ""
-    while True:
-        print("Choose the final video language: (en/fr)")
-        language = input()
-        if(language == "en"):
-            mat = "Matthew"
-            break
-        elif (language == "fr"):
-            mat = "Mathieu"
-            break
-        else:
-            print("Please enter a valid language.\n")
-            continue  """
     mat = "Matthew"         
     session = Session(profile_name="batmstrong")
     polly = session.client("polly")

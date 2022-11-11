@@ -1,4 +1,5 @@
 import os
+import shutil
 
 def checkFile(path):
     if os.path.isfile(path):
@@ -37,4 +38,10 @@ def mkFile(path):
         return True
     else:
         return False
-        
+
+def rmDir(path):
+    if os.path.isdir(path):
+        shutil.rmtree(path)
+        return True
+    else:
+        return False        
