@@ -4,6 +4,6 @@ pillow>=9.3.0
 moviepy>=1.0.3
 pvleopard>=1.1
 ffmpeg-python>=0.2.0
-ffmpeg>=5.1
+ffmpeg>=1.4
 opencv-python>=4.6.0.66
 boto3>=1.26.6
