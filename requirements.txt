@@ -1,7 +1,9 @@
-pytube==12.1.0
-gTTS
-pinscrape
-pillow
-moviepy==2.8.1
+pytube>=12.1.0
+pinscrape>=1.1.0
+pillow>=9.3.0
+moviepy>=1.0.3
 pvleopard>=1.1
 ffmpeg-python>=5.1.2
+opencv-python>=4.6.0.66
+ffmpeg-python>=5.1.2
+boto3>=1.26.6

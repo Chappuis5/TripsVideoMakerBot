@@ -1,4 +1,4 @@
-# TripsVideoMakerBot
+# TikTokVideoMakerBot
 
 ## Installation
 
@@ -6,23 +6,18 @@
 2. Change paths to /images in scraper.py (scraperMethod).
 3. Run ``pip install -r requirements.txt``.
 
-## Don't push to origin, create another branch
+## Usage
 
-The code is sans dessus sans dessous, pusher to origin would cause major
-issues. Instead, create your own develop branch.
+1. Setup the [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), and set the maximum session duration to seven days. 
+2. Change the 35th line in ```voice.py```with your user profile name.
+3. Run main.py ```python3 main.py````
+4. Connect to AWS, the session will last 7 days.
 
 ## TODO
 
 WARNING: Don't forget to update the requirements.txt file!  
 
-- [ ] edit images and videos.
-- [ ] Create a musicScraping method.
-- [ ] Create a videoScraping method.
-- [ ] Manage all exceptions.
-- [ ] Add a "Current files under /images weight [weight], do you want to erase
-  them? (y/n)" when files are over a certain weight.
-- [ ] Manage path emerging issues.
-- [ ] Simplify the code.
-- [x] Scrape and resize images from pinterest based on keywords.
+- [ ] Translate text in other languages
+- [ ] Add sound effects
   
  
