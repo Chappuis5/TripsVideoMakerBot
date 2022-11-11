@@ -14,7 +14,7 @@ WARNING: If you have ffmpeg installed with ffmpeg-python run ```pip uninstall ff
 3. Run main.py ```python3 main.py````
 4. Connect to AWS, the session will last 7 days. 
 
-After a push, if __pycache__.py files are on the git repo, remove them using: ```git rm -r --cached . && git add . && git commit -m "fixing .gitignore"```
+After a push, if __pycache__.py files can be found on the git repo, remove them using: ```git rm -r --cached . && git add . && git commit -m "fixing .gitignore"```
 
 ## TODO
 
@@ -22,5 +22,6 @@ WARNING: Don't forget to update the requirements.txt file!
 
 - [ ] Translate text in other languages
 - [ ] Add sound effects
+- [ ] Add aws identifier with a toml file
   
  
