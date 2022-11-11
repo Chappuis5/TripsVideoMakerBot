@@ -103,5 +103,3 @@ def subMaker(story, country):
        
     ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=22,Fontname=Impact,PrimaryColour=&H00FFFFFF,Italic=1,Bold=0,Outline=2,OutlineColour=&H00000000,BorderStyle=1,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()   
     
-
-subMaker("Enigma", country="United Kingdom" )
