@@ -168,7 +168,7 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
             print("\n")
             print(f"-------------Downloading videos for {story}-------------\n")
             scriper_multi_vids(input_story, input_country)
-            editor(input_story, input_country)
+            editor(input_story, input_country, 1, "")
             mkDir("./output")
             mkDir(f"./output/{country}")
             subMaker(story, country)
