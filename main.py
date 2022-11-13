@@ -148,7 +148,7 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
             else:
                 print("Downloading video...")
                 video_downloader(data_b[selected_tag_index]['videos'][input_video-1]['url'], f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}")
-                fileRenamer(background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}", "video_0.mp4")
+                fileRenamer(background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4", "video_0.mp4")
                 scriper_single_vid(input_story, input_country)
                 back_video_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
                 editor(input_story, input_country, 0, back_video_path)
