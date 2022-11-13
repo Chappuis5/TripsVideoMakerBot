@@ -1,6 +1,5 @@
 assets/
 output/
-backgrounds/
 videocreation/__pycache__/
 videoMaker/__pycache__/
 utils/__pycache__
