@@ -3,7 +3,6 @@ import shutil
 
 def checkFile(path):
     if os.path.isfile(path):
-
         return True
     else:
         return False
@@ -44,4 +43,16 @@ def rmDir(path):
         shutil.rmtree(path)
         return True
     else:
-        return False        
+        return False 
+           
+def fileRenamer(back_path, path, title, new_title):   
+    if os.path.isfile(back_path):
+        source = os.path.join(path,title)
+        destination = os.path.join(path,new_title)
+        os.rename(source, destination)
+        print("File renamed")
+        return True
+    else:
+        print("File not found")
+        return False
+    

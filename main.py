@@ -1,10 +1,11 @@
-from videocreation.script import scriper
+from videocreation.script import scriper_multi_vids, scriper_single_vid
 from videocreation.videoEdit import editor
 import time
-from utils.fileCheckers import mkDir, rmDir
+from utils.fileCheckers import mkDir, rmDir, checkFile, fileRenamer
 import json
 import os, shutil
 from videocreation.subtitles import subMaker
+from videoMaker.single_vid_d import video_downloader
 
 print("-------------Welcome to the TripTricks bot for TikTok-------------\n")
 print("This bot will help you create a video based on a trip destination\n")
@@ -16,9 +17,8 @@ f = open(full_path)
 data = json.load(f)
 num = len(data)
 available_countries = []
-print("Currently supported cities:\n")
+print("Currently supported countries:\n")
 for i in range(num):
-    print(data[i]['country'])
     available_countries.append(data[i]['country'])
     print(f"{i+1} - {available_countries[i]}")
 
@@ -60,24 +60,135 @@ while True:
 
 story = available_stories[int(input_story)-1]
 input_story = int(input_story)-1
+
 #print(story)
 #print(data[input_country]['stories'][input_story]['str_0'])
 
 rmDir("./assets")
-time.sleep(0.5)
 mkDir("./assets")
 mkDir("./assets/images")
 print("\n")
-print(f"-------------Downloading videos for {story}-------------\n")
-scriper(input_story, input_country)
-editor(input_story, input_country)
-mkDir("./output")
-mkDir(f"./output/{country}")
-subMaker(story, country)
-shutil.rmtree("./assets")
-os.system("echo clear")
-print("-------------Video created!-------------\n")
-print(f"---------./output/final_{story}---------")
+if len(data[input_country]['stories'][input_story]['strings']) == 1:
+    print("The story you've selected only has one string.\n")
+    print("Do you want to edit with a video from the database? (y/n)")
+    while True:
+        try:
+            input_choice = input("Choice (y/n): ")
+        except ValueError:
+            print("Please enter a number")
+            continue
+        if input_choice != "y" and input_choice != "n":
+            print("Please enter y or n")
+            continue
+        elif input_choice == "y":
+            print("\n")
+            print("-------------Available categories-------------\n")
+            absolute_path_backgrounds = os.path.dirname(__file__)
+            relative_path_backgrounds = "videocreation/data/backgrounds.json"
+            full_path_backgrounds = os.path.join(absolute_path_backgrounds, relative_path_backgrounds)
+            f_b = open(full_path_backgrounds)
+            data_b = json.load(f_b)
+            num_b = len(data_b)
+            available_tags = []
+            for i in range(num_b):
+                available_tags.append(data_b[i]['tag'])
+                print(f"{i+1} - {available_tags[i]}")
+            while True:
+                try:
+                    input_tag = int(input("Choice (1/2/..): "))
+                except ValueError:
+                    print("Please enter a number")
+                    continue
+                if input_tag <= 0 or input_tag > num_b:
+                    print("Out of range")
+                    continue
+                else:
+                    break
+            print("\n")
+            print("-------------Available videos-------------\n")
+            num_videos = len(data_b[input_tag-1]['videos'])
+            selected_tag_index = int(input_tag)-1
+            available_videos = []
+            for i in range(num_videos):
+                available_videos.append(data_b[input_tag-1]['videos'][i]['title'])
+                print(f"{i+1} - {available_videos[i]}")
+            while True:
+                try:
+                    input_video = int(input("Choice (1/2/..): "))
+                    
+                except ValueError:
+                    print("Please enter a number")
+                    continue
+                if input_video <= 0 or input_video > num_videos:
+                    print("Out of range")
+                    continue
+                else:
+                    break
+            print("\n")
+            mkDir("./backgrounds")
+            mkDir(f"./backgrounds/{data_b[selected_tag_index]['tag']}")
+            background_selected_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4")
+            print(f"./backgrounds/{data_b[selected_tag_index]['tag']}/")
+            print(f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}")
+            if checkFile(background_selected_path):
+                print("File already exists")
+                fileRenamer(background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4", "video_0.mp4")
+                scriper_single_vid(input_story, input_country)
+                back_video_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
+                editor(input_story, input_country, 0, back_video_path)
+                mkDir("./output")
+                mkDir(f"./output/{country}")
+                subMaker(story, country)
+                shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
+                new_background_selected_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
+                fileRenamer(new_background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/","video_0.mp4", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4")
+                os.system("echo clear")
+                print("-------------Video created!-------------\n")
+                print(f"---------./output/final_{story}---------")
+            else:
+                print("Downloading video...")
+                video_downloader(data_b[selected_tag_index]['videos'][input_video-1]['url'], f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}")
+                fileRenamer(background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}", "video_0.mp4")
+                scriper_single_vid(input_story, input_country)
+                back_video_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
+                editor(input_story, input_country, 0, back_video_path)
+                mkDir("./output")
+                mkDir(f"./output/{country}")
+                subMaker(story, country)
+                shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
+                new_background_selected_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
+                fileRenamer(new_background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/","video_0.mp4", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4")
+                os.system("echo clear")
+                print("-------------Video created!-------------\n")
+                print(f"---------./output/final_{story}---------")
+
+            
+            break
+        elif input_choice == "n":
+            print("\n")
+            print(f"-------------Downloading videos for {story}-------------\n")
+            scriper_multi_vids(input_story, input_country)
+            editor(input_story, input_country)
+            mkDir("./output")
+            mkDir(f"./output/{country}")
+            subMaker(story, country)
+            shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
+            os.system("echo clear")
+            print("-------------Video created!-------------\n")
+            print(f"---------./output/final_{story}---------")
+            break
+            
+elif len(data[input_country]['stories'][input_story]['strings']) > 1:
+    print(f"-------------Downloading videos for {story}-------------\n")
+    scriper_multi_vids(input_story, input_country)
+    editor(input_story, input_country, 1, "")
+    mkDir("./output")
+    mkDir(f"./output/{country}")
+    subMaker(story, country)
+    shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
+    os.system("echo clear")
+    print("-------------Video created!-------------\n")
+    print(f"---------./output/final_{story}---------")
 
 
 

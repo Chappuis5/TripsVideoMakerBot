@@ -79,7 +79,9 @@ def subMaker(story, country):
         y = x.upper()
         txt_file_upper = open(os.path.join(full_path2, "subtitles_up.txt"), 'a')
         txt_file_upper.write(y)
+        txt_file_upper.close()
     os.remove(os.path.join(full_path2, filename.replace(".srt", ".txt")))
+    txt_file.close()
 
     for name in os.listdir(full_path2):
         if name.endswith(".txt"):
@@ -101,5 +103,5 @@ def subMaker(story, country):
         video_index += 1
         final_video_path = f"./output/{country}/final_{story}_{video_index}.mp4"
        
-    ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=22,Fontname=Impact,PrimaryColour=&H00FFFFFF,Italic=1,Bold=0,Outline=2,OutlineColour=&H00000000,BorderStyle=1,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()   
+    ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=20,Fontname=LEMON MILK,PrimaryColour=&H00FFFFFF,Italic=0,Bold=1,Outline=2,OutlineColour=&H00000000,BorderStyle=3,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()   
     
