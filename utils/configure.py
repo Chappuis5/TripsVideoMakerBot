@@ -11,6 +11,7 @@ def checkConfig():
         available_bold = [0,1]
         available_italic = [0,1]
         available_fonts = ['Roboto', 'Futura', 'LEMON MILK', 'Impact']
+        available_outline_width = [1, 2, 3]
         available_font_sizes = [5, 10, 15, 20]
         available_pm_transp = ['00', '40', '80']
         available_out_transp = ['00', '40', '80']
@@ -22,6 +23,7 @@ def checkConfig():
                         'settings': {
                                 'bold': 1,
                                 'italic': 0,
+                                'outline_width': 1,
                                 'font': 'Futura',
                                 'font_size': 15,
                                 'pm_transp': '00',
@@ -52,6 +54,12 @@ def checkConfig():
                                 print("OK")
                         else:
                                 print("Wrong italic value, check your config.toml")
+                                exit()
+                        outliness = data['settings']['outline_width']
+                        if outliness in available_outline_width or (type(outliness) == int and outliness in range(1,5)):
+                                print("OK")
+                        else:
+                                print("Wrong outline_width value, check your config.toml")
                                 exit()
                         font = data['settings']['font']
                         if font in available_fonts or type(font) == str:

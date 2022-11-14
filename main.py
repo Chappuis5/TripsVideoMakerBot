@@ -157,12 +157,12 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
                     elif input_subtitle == 1:
                         print("Uppercase")
                         config_data = toml.load("config.toml")
-                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                         break
 
                     elif input_subtitle == 2:
                         config_data = toml.load("config.toml")
-                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                         break
                     else:
                         break
@@ -195,11 +195,11 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
                         continue
                     elif input_subtitle == 1:
                         config_data = toml.load("config.toml")
-                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                         break
                     elif input_subtitle == 2:
                         config_data = toml.load("config.toml")
-                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['outline_width'],config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                         break
                     else:
                         break
@@ -233,11 +233,11 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
                     continue
                 elif input_subtitle == 1:
                     config_data = toml.load("config.toml")
-                    subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                    subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                     break
                 elif input_subtitle == 2:
                     config_data = toml.load("config.toml")
-                    subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                    subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
                     break
                 else:
                     break
@@ -267,11 +267,11 @@ elif len(data[input_country]['stories'][input_story]['strings']) > 1:
             continue
         elif input_subtitle == 1:
             config_data = toml.load("config.toml")
-            subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+            subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
             break
         elif input_subtitle == 2:
             config_data = toml.load("config.toml")
-            subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+            subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'],config_data['settings']['outline_width'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
             break
         else:
             break
