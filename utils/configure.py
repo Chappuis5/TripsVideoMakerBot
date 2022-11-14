@@ -96,7 +96,7 @@ def checkConfig():
 
                         margin = data['settings']['margin']
 
-                        if margin in available_margin or (type(margin) == int and margin in range(0, 200)):
+                        if margin in available_margin or (type(margin) == int and margin in range(0, 300)):
                                 print("OK")
                         else:
                                 print("margin is either not the wrong type or out of range")
