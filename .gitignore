@@ -2,6 +2,7 @@ assets/
 output/
 backgrounds/
 videocreation/__pycache__/
+videocreation/data/
 videoMaker/__pycache__/
 utils/__pycache__
 __pycache__/
