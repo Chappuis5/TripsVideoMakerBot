@@ -23,11 +23,11 @@ def checkConfig():
                         'settings': {
                                 'bold': 1,
                                 'italic': 0,
-                                'outline_width': 1,
+                                'outline_width': 2,
                                 'font': 'Futura',
-                                'font_size': 15,
-                                'pm_transp': '00',
-                                'out_transp': '00',
+                                'font_size': 10,
+                                'pm_transp': '80',
+                                'out_transp': '80',
                                 'border_style': 3,
                                 'margin': 145,
                                 'length_limit': 4,
@@ -37,7 +37,7 @@ def checkConfig():
         if checkFile("./config.toml"):
                 data = toml.load("./config.toml")
                 boldness  = data['settings']['bold']
-                if len(data['settings']) != 10:
+                if len(data['settings']) != 11:
                         print("Config file is not complete")
                         print("Writing default config file....")
                         with open("./config.toml", "w") as f:
