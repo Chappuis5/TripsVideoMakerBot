@@ -1,5 +1,6 @@
 import os
 import toml
+import numpy as np
 
 def checkFile(path):
     if os.path.isfile(path):
@@ -111,7 +112,7 @@ def checkConfig():
 
                         endpoint_sec = data['settings']['endpoint_sec']
 
-                        if endpoint_sec in available_endpoint_sec or (type(endpoint_sec) == float and endpoint_sec in range(0.1, 3)):
+                        if endpoint_sec in available_endpoint_sec or (type(endpoint_sec) == float and endpoint_sec in np.arange(0, 3, 0.01)):
                                 print("OK")
                         else:
                                 print("Endpoint value is either not the wrong type or out of range")
