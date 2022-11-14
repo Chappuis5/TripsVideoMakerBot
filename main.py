@@ -2,10 +2,12 @@ from videocreation.script import scriper_multi_vids, scriper_single_vid
 from videocreation.videoEdit import editor
 import time
 from utils.fileCheckers import mkDir, rmDir, checkFile, fileRenamer
+from utils.configure import checkConfig
 import json
 import os, shutil
-from videocreation.subtitles import subMaker
+from videocreation.subtitles import subMaker, subMakerLower
 from videoMaker.single_vid_d import video_downloader
+import toml
 
 print("-------------Welcome to the TripTricks bot for TikTok-------------\n")
 print("This bot will help you create a video based on a trip destination\n")
@@ -67,6 +69,8 @@ input_story = int(input_story)-1
 rmDir("./assets")
 mkDir("./assets")
 mkDir("./assets/images")
+print("Checking exiting config.toml....")
+checkConfig()
 print("\n")
 if len(data[input_country]['stories'][input_story]['strings']) == 1:
     print("The story you've selected only has one string.\n")
@@ -138,7 +142,30 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
                 editor(input_story, input_country, 0, back_video_path)
                 mkDir("./output")
                 mkDir(f"./output/{country}")
-                subMaker(story, country)
+                print("Do you want to add uppercase subtitles or lowercase subtitles?")
+                print("1 - Uppercase")
+                print("2 - Lowercase")
+                while True:
+                    try:
+                        input_subtitle = int(input("Choice (1/2): "))
+                    except ValueError:
+                        print("Please enter a number")
+                        continue
+                    if input_subtitle <= 0 or input_subtitle > 2:
+                        print("Out of range")
+                        continue
+                    elif input_subtitle == 1:
+                        print("Uppercase")
+                        config_data = toml.load("config.toml")
+                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        break
+
+                    elif input_subtitle == 2:
+                        config_data = toml.load("config.toml")
+                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        break
+                    else:
+                        break
                 shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
                 new_background_selected_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
                 fileRenamer(new_background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/","video_0.mp4", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4")
@@ -154,7 +181,28 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
                 editor(input_story, input_country, 0, back_video_path)
                 mkDir("./output")
                 mkDir(f"./output/{country}")
-                subMaker(story, country)
+                print("Do you want to add uppercase subtitle or lowercase subtitles?")
+                print("1 - Uppercase")
+                print("2 - Lowercase")
+                while True:
+                    try:
+                        input_subtitle = int(input("Choice (1/2): "))
+                    except ValueError:
+                        print("Please enter a number")
+                        continue
+                    if input_subtitle <= 0 or input_subtitle > 2:
+                        print("Out of range")
+                        continue
+                    elif input_subtitle == 1:
+                        config_data = toml.load("config.toml")
+                        subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        break
+                    elif input_subtitle == 2:
+                        config_data = toml.load("config.toml")
+                        subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                        break
+                    else:
+                        break
                 shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
                 new_background_selected_path = os.path.join(f"./backgrounds/{data_b[selected_tag_index]['tag']}/", "video_0.mp4")
                 fileRenamer(new_background_selected_path,f"./backgrounds/{data_b[selected_tag_index]['tag']}/","video_0.mp4", f"{data_b[selected_tag_index]['videos'][input_video-1]['title']}.mp4")
@@ -171,7 +219,28 @@ if len(data[input_country]['stories'][input_story]['strings']) == 1:
             editor(input_story, input_country, 1, "")
             mkDir("./output")
             mkDir(f"./output/{country}")
-            subMaker(story, country)
+            print("Do you want to add uppercase subtitle or lowercase subtitles?")
+            print("1 - Uppercase")
+            print("2 - Lowercase")
+            while True:
+                try:
+                    input_subtitle = int(input("Choice (1/2): "))
+                except ValueError:
+                    print("Please enter a number")
+                    continue
+                if input_subtitle <= 0 or input_subtitle > 2:
+                    print("Out of range")
+                    continue
+                elif input_subtitle == 1:
+                    config_data = toml.load("config.toml")
+                    subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                    break
+                elif input_subtitle == 2:
+                    config_data = toml.load("config.toml")
+                    subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+                    break
+                else:
+                    break
             shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
             os.system("echo clear")
             print("-------------Video created!-------------\n")
@@ -184,7 +253,28 @@ elif len(data[input_country]['stories'][input_story]['strings']) > 1:
     editor(input_story, input_country, 1, "")
     mkDir("./output")
     mkDir(f"./output/{country}")
-    subMaker(story, country)
+    print("Do you want to add uppercase subtitle or lowercase subtitles?")
+    print("1 - Uppercase")
+    print("2 - Lowercase")
+    while True:
+        try:
+            input_subtitle = int(input("Choice (1/2): "))
+        except ValueError:
+            print("Please enter a number")
+            continue
+        if input_subtitle <= 0 or input_subtitle > 2:
+            print("Out of range")
+            continue
+        elif input_subtitle == 1:
+            config_data = toml.load("config.toml")
+            subMaker(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+            break
+        elif input_subtitle == 2:
+            config_data = toml.load("config.toml")
+            subMakerLower(story, country, config_data['settings']['bold'], config_data['settings']['italic'], config_data['settings']['font'], config_data['settings']['font_size'], config_data['settings']['pm_transp'], config_data['settings']['out_transp'], config_data['settings']['border_style'], config_data['settings']['margin'],config_data['settings']['length_limit'], config_data['settings']['endpoint_sec'] )
+            break
+        else:
+            break
     shutil.rmtree("./assets") ## COMMENT THIS LINE IF ON WINDOWS
     os.system("echo clear")
     print("-------------Video created!-------------\n")
