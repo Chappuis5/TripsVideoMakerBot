@@ -105,10 +105,8 @@ def subMakerLower(story, country, bold, italic,outline_width, font, font_size, p
     while(os.path.exists(final_video_path)):
         video_index += 1
         final_video_path = f"./output/{country}/final_{story}_{video_index}.mp4"
-       
-    ffmpeg.concat(video.filter("subtitles", full_path4, force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV={margin}'), audio, v=1, a=1).output(final_video_path).run() 
 
-    #ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=10,Fontname=Futura,PrimaryColour=&H00FFFFFF,Italic=1,Bold=1,Outline=1,OutlineColour=&H00000000,BorderStyle=2,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()     
+    ffmpeg.concat(video.filter("subtitles", full_path4, force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV={margin}'), audio, v=1, a=1).output(final_video_path).run() 
 
 def subMaker(story, country, bold, italic,outline_width, font, font_size, pm_transp, out_transp, border_style, margin, length_limit, endpoint_sec):
     leopard = pvleopard.create(access_key="JHRxxr3akK4RilsSIOyULG8IMwwmbMQX6fLcTeB2yXgXSsDWcexbdA==")
@@ -125,8 +123,6 @@ def subMaker(story, country, bold, italic,outline_width, font, font_size, pm_tra
     file1 = "subtitles.srt"
     with open(os.path.join(parent_dir1, file1), 'w') as f:
         f.write(to_srt(length_limit, endpoint_sec, words)) 
-    
-
     
     ### SUBTITLES.SRT TO UPPERCASE
     dir = "subtitles"
@@ -169,4 +165,3 @@ def subMaker(story, country, bold, italic,outline_width, font, font_size, pm_tra
     
     ffmpeg.concat(video.filter("subtitles", full_path4, force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV={margin}'), audio, v=1, a=1).output(final_video_path).run() 
 
-    #ffmpeg.concat(video.filter("subtitles", full_path4, force_style='Fontsize=10,Fontname=Futura,PrimaryColour=&H00FFFFFF,Italic=1,Bold=1,Outline=1,OutlineColour=&H00000000,BorderStyle=2,Alignment=2,MarginV=145'), audio, v=1, a=1).output(final_video_path).run()     

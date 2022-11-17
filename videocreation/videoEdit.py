@@ -34,21 +34,13 @@ def videoCroper(interval, filename):
     return clip
 
 def concatenate_audio_moviepy(audio_clip_paths, output_path):
-    #Concatenates several audio files into one audio file using MoviePy
-    #and save it to `output_path`. Note that extension (mp3, etc.) must be added to `output_path`
+
     clips = [AudioFileClip(c) for c in audio_clip_paths]
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
  
 
 def concatenate(temp_vid_objects, method="compose"):
-    #Concatenates several video files into one video file
-   #and save it to `output_path`. Note that extension (mp4, etc.) must be added to `output_path`
-   # `method` can be either 'compose' or 'reduce':
-      #  `reduce`: Reduce the quality of the video to the lowest quality on the list of `video_clip_paths`.
-       # `compose`: type help(concatenate_videoclips) for the info
-    # create VideoFileClip object for each video file
-    #clips = [VideoFileClip(c) for c in video_clip_paths]
     clips = temp_vid_objects
     if method == "reduce":
         # calculate minimum width & height across all clips
@@ -97,6 +89,9 @@ def editor(input_story, input_country, index, back_video_path):
             if(data[input_country]['stories'][input_story]['images'][i][f"image_{i}"] != ""):
                 imageDownloader(data[input_country]['stories'][input_story]['images'][i][f"image_{i}"], i)
                 obj = imageToVid(obj,i)
+                #obj.write_videofile(f"./assets/backgrounds/video_{i}.mp4", , codec='libx264', audio_codec='aac')
+                #if sub_index = 1:
+                #   subMaker()
             temp_vid_objects.append(obj)
         ### CONCATENATE VIDEO ###
         mkDir("./assets/final") 

@@ -14,47 +14,15 @@ def mkDir(path):
         #print("Directory created")
         return False
 
-##(parameters) keyword : keyword for searching video, name : output filename
-def ytbScraper (keyword, name):
-    #background_config: Tuple[str, str, str, Any]
-    #Path("./assets/backgrounds/").mkdir(parents=True, exist_ok=True)
-    directory = "backgrounds"
-    parent_dir = "./assets"
-    path = os.path.join(parent_dir, directory)
-    mkDir(path)
-    if mkDir(path) == True:
-        s = Search(keyword)# Get first batch of videos
-        i = 0
-        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 600 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
-            i += 1
-            print(i)
-            if(len(s.results) == i): #If it didn't find any good videos, it gets a new batch of videos
-                s.get_next_results()
-                print("No correct videos found, fetching more...")
-        print("Video found !")
-        url = s.results[i].watch_url
-        print(s.results[i].watch_url)
-        #print("Downloading video...")
-        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
-        #print("Video downloaded.")
-        
-    else: 
-        mkDir(path)
-        s = Search(keyword)
-        i = 0
-        while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 600 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
-            i += 1
-            print(i)
-            if(len(s.results) == i):
-                s.get_next_results()
-                print("No correct videos found, fetching more...")
-        print("Video found !")
-        url = s.results[i].watch_url
-        print(s.results[i].watch_url)
-        #print("Downloading video...")
-        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
-        #print("Video downloaded.")
-        
+def checkIfUrl(keyword):
+    print(keyword)
+    if keyword[:4]== "http":
+        print(keyword[:4])
+        print("url")
+        return True
+    else :
+        print("not url")
+        return False
 
 def resolutionChecker(url):
     my_video = YouTube(url)
@@ -73,5 +41,49 @@ def resolutionChecker(url):
     print("No 1080p")
     return False
 
-#resolutionChecker("https://www.youtube.com/watch?v=5v47lgLLm5I")
+def videoFinder(keyword):
+    s = Search(keyword)# Get first batch of videos
+    i = 0
+    while (int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds'))) > 600 or int(s.results[i].vid_info.get('videoDetails', {}).get('lengthSeconds')) < 50 or resolutionChecker(s.results[i].watch_url) == False:
+        i += 1
+        print(i)
+        if(len(s.results) == i): #If it didn't find any good videos, it gets a new batch of videos
+            s.get_next_results()
+            print("No correct videos found, fetching more...")
+    print("Video found !")
+    url = s.results[i].watch_url
+    print(s.results[i].watch_url) 
+    return url 
+
+##(parameters) keyword : keyword for searching video, name : output filename
+def ytbScraper (keyword, name):
+    print(keyword)
+    #background_config: Tuple[str, str, str, Any]
+    #Path("./assets/backgrounds/").mkdir(parents=True, exist_ok=True)
+    directory = "backgrounds"
+    parent_dir = "./assets"
+    path = os.path.join(parent_dir, directory)
+    mkDir(path)
+    if mkDir(path) == True:
+        if checkIfUrl == True:
+            print("its url")
+            url = keyword
+        else:
+            print("its not url")
+            url = videoFinder(keyword)
+        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
+        #print("Video downloaded.")
+    else: 
+        mkDir(path)
+        if checkIfUrl == True:
+            url = keyword
+        else:
+            url = videoFinder(keyword)
+        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
+        #print("Video downloaded.")
+
+    
+
+
+
 
