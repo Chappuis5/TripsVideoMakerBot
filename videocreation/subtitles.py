@@ -167,13 +167,14 @@ def subMaker(story, country, bold, italic,outline_width, font, font_size, pm_tra
         final_video_path = f"./output/{country}/final_{story}_{video_index}.mp4"
     
     ffmpeg.concat(video.filter("subtitles", full_path4, force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV={margin}'), audio, v=1, a=1).output(final_video_path).run() 
-    video2 = ffmpeg.input(final_video_path)
-    audio2 = video2.audio
-    ffmpeg.concat(video2.filter("subtitles", full_path4 , force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV=55'), audio2, v=1, a=1).output(lol_path).run() 
+    #video2 = ffmpeg.input(final_video_path)
+    #audio2 = video2.audio
+    #ffmpeg.concat(video2.filter("subtitles", full_path4 , force_style=f'Fontsize={font_size},Fontname={font},PrimaryColour=&H{pm_transp}FFFFFF,Italic={italic},Bold={bold},Outline={outline_width},OutlineColour=&H{out_transp}000000,BorderStyle={border_style},Alignment=2,MarginV=55'), audio2, v=1, a=1).output(lol_path).run() 
 
 #def CheckIfOtherSubtitlesPosition():
 """ country = "Reddit stories"
 story = "15_11_03"
+up_or_down = "up"
 data = json.load(open("./videocreation/data/country_stories.json"))
 for i in range(len(data)):
     if data[i]["country"] == country:
@@ -189,6 +190,8 @@ for i in range(len(data)):
                     sub_file = "sub_subtitles.srt"
                     with open(os.path.join(sub_parent_dir, sub_file), 'w') as f:
                         f.write(to_srt(length_limit, endpoint_sec, words)) 
+                    if up_or_down == "up":
+
                 #for z in range(len(data[i]['stories'][j]['strings'])) """
                 
 
