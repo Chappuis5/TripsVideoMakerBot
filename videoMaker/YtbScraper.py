@@ -24,6 +24,8 @@ def checkIfUrl(keyword):
         print("not url")
         return False
 
+
+
 def resolutionChecker(url):
     my_video = YouTube(url)
     video_resolutions = []
@@ -71,7 +73,7 @@ def ytbScraper (keyword, name):
         else:
             print("its not url")
             url = videoFinder(keyword)
-        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
+        YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
         #print("Video downloaded.")
     else: 
         mkDir(path)
@@ -79,7 +81,7 @@ def ytbScraper (keyword, name):
             url = keyword
         else:
             url = videoFinder(keyword)
-        yt = YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
+        YouTube(url, use_oauth=True, allow_oauth_cache=True).streams.filter(res = "1080p").first().download(path, filename=f"{name}.mp4")
         #print("Video downloaded.")
 
     
